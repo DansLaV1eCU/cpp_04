@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:46:21 by danslav1e         #+#    #+#             */
-/*   Updated: 2026/03/01 20:46:54 by danslav1e        ###   ########.fr       */
+/*   Updated: 2026/03/11 18:19:14 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ int main()
     std::cout << "i is a: " << i->getType() << std::endl;
     
     std::cout << "\n--- Sounds ---" << std::endl;
-    i->makeSound(); // Should output the cat sound!
-    j->makeSound(); // Should output the dog sound!
-    meta->makeSound(); // Base animal sound
+    i->makeSound();
+    j->makeSound();
+    meta->makeSound();
 
     std::cout << "\n========== WRONG ANIMAL TESTS ==========" << std::endl;
     const WrongAnimal* wrongMeta = new WrongAnimal();
-    // Create a WrongCat but hide it under a WrongAnimal pointer
     const WrongAnimal* wrongCat = new WrongCat(); 
 
     std::cout << "\n--- Types ---" << std::endl;
@@ -43,12 +42,9 @@ int main()
     
     std::cout << "\n--- Sounds ---" << std::endl;
     wrongMeta->makeSound();
-    // THE MAIN TEST: This should output the WrongAnimal sound, NOT the WrongCat sound,
-    // because makeSound() in WrongAnimal is NOT virtual!
     wrongCat->makeSound(); 
 
     std::cout << "\n========== ADDITIONAL TESTS (Stack) ==========" << std::endl;
-    // Show that WrongCat can actually meow if called directly, not through a base pointer
     WrongCat realWrongCat;
     realWrongCat.makeSound(); 
     

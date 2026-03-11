@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:46:21 by danslav1e         #+#    #+#             */
-/*   Updated: 2026/03/01 23:07:00 by danslav1e        ###   ########.fr       */
+/*   Updated: 2026/03/11 18:31:45 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,38 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
-#include <iostream>
 
 int main()
 {
-    const Animal meta[100];
-    
-	for ( int i = 0; i < 100; i++ ) {
+	std::cout << "\n========== ARRAY TESTS ==========" << std::endl;
+	const Animal *meta[10];
+	
+	for ( int i = 0; i < 10; i++ ) {
 		if (i % 2 == 0)
 			meta[i] = new Dog();
+		else
+			meta[i] = new Cat();
 	}
 
+	for ( int i = 0; i < 10; i++ ) {
+		delete meta[i];
+	}
 
+	std::cout << "\n========== DEEP COPY TESTS ==========" << std::endl;
+	std::cout << "\n--- Testing Dog Copy ---" << std::endl;
+	Dog basicDog;
+	{
+		Dog tmpDog = basicDog;
+	}
+	std::cout << "Dog survived deep copy test!" << std::endl;
 
-    return 0;
+	std::cout << "\n--- Testing Cat Assignment ---" << std::endl;
+	Cat basicCat;
+	Cat anotherCat;
+	anotherCat = basicCat;
+	std::cout << "Cat survived deep assignment test!" << std::endl;
+
+	std::cout << "\n========== END OF TESTS ==========\n" << std::endl;
+
+	return 0;
 }
